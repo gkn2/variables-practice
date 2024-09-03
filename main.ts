@@ -36,32 +36,32 @@ function spawnpigeon () {
         ........c333bb333cbbfff.........
         ........c33cc33cc3fff...........
         `, SpriteKind.bird)
-    pigeon.setPosition(randint(10, 150), randint(10, 110))
+    pigeon.setPosition(randint(10, 150), randint(10, 120))
     pigeon.setScale(0.65, ScaleAnchor.Middle)
     pigeon.setPosition(80, 0)
-    pigeon.setVelocity(randint(50, 100), randint(50, 80))
+    pigeon.setVelocity(pigeonvelocity, pigeonvelocity)
     pigeon.setBounceOnWall(true)
 }
 sprites.onCreated(SpriteKind.bird, function (sprite) {
     pigeoncount += 1
-    heroSprite.sayText(pigeoncount)
+    heroSprite.sayText(pigeonvelocity)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.bird, function (sprite, otherSprite) {
-    let maxpigeonvelocity = 0
     sprites.destroy(otherSprite)
     pigeoncount += -1
-    heroSprite.sayText(pigeoncount)
     if (pigeonvelocity <= maxpigeonvelocity) {
         pigeonvelocity += 10
     }
+    heroSprite.sayText(pigeonvelocity)
 })
 let pigeon: Sprite = null
 let heroSprite: Sprite = null
+let maxpigeonvelocity = 0
 let pigeonvelocity = 0
-let pigeoncount = 0
 let maxducks = 5
-pigeoncount = 0
-pigeonvelocity = 75
+let pigeoncount = 0
+pigeonvelocity = 50
+maxpigeonvelocity = 100
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
